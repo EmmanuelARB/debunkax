@@ -143,6 +143,25 @@ class OpenRouterCheckClientTest {
     }
 
     @Test
+    fun `a reply that is not the expected JSON is a CheckFailure, not a crash`() = runTest {
+        server.enqueue(successBody("Désolé, je ne peux pas répondre."))
+        try {
+            client().check(claim)
+            org.junit.Assert.fail("expected a CheckFailure")
+        } catch (e: CheckFailure.Unexpected) {
+            // expected
+        }
+
+        server.enqueue(MockResponse().setResponseCode(200).setBody("<html>gateway</html>"))
+        try {
+            client().check(claim)
+            org.junit.Assert.fail("expected a CheckFailure")
+        } catch (e: CheckFailure.Unexpected) {
+            // expected
+        }
+    }
+
+    @Test
     fun `a sentence the pre-check rejects costs one search-free request and is not a Claim`() = runTest {
         enqueueTriage(isClaim = false)
 

@@ -31,19 +31,22 @@ class CheckBudget(private val limit: Int?) {
  * Politicians repeat figures with slightly different wording, hence token similarity rather than equality.
  */
 class RepeatedClaimMatcher(private val threshold: Double = 0.8) {
-    private val known = mutableListOf<Pair<Set<String>, CheckResult>>()
+    private data class Known(val tokens: Set<String>, val speaker: String?, val result: CheckResult)
 
+    private val known = mutableListOf<Known>()
+
+    /** A repeat only counts for the same [speaker]: "je n'ai jamais voté X" depends on who says it. */
     @Synchronized
-    fun find(text: String): CheckResult? {
+    fun find(text: String, speaker: String? = null): CheckResult? {
         val tokens = tokens(text)
         if (tokens.isEmpty()) return null
-        return known.firstOrNull { (other, _) -> jaccard(tokens, other) >= threshold }?.second
+        return known.firstOrNull { it.speaker == speaker && jaccard(tokens, it.tokens) >= threshold }?.result
     }
 
     @Synchronized
-    fun remember(text: String, result: CheckResult) {
+    fun remember(text: String, result: CheckResult, speaker: String? = null) {
         val tokens = tokens(text)
-        if (tokens.isNotEmpty()) known += tokens to result
+        if (tokens.isNotEmpty()) known += Known(tokens, speaker, result)
     }
 
     @Synchronized

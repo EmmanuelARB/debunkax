@@ -1,5 +1,6 @@
 package app.debunkax.speech
 
+import android.annotation.SuppressLint
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioPlaybackCaptureConfiguration
@@ -27,6 +28,7 @@ import kotlinx.coroutines.isActive
  */
 class PlaybackCaptureAudioSource(private val projection: MediaProjection) : AudioSource {
 
+    @SuppressLint("MissingPermission") // RECORD_AUDIO is granted by the UI layer before collecting.
     override fun chunks(): Flow<ShortArray> = flow {
         val revoked = CompletableDeferred<Unit>()
         projection.registerCallback(

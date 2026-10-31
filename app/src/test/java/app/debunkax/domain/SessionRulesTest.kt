@@ -117,6 +117,15 @@ class RepeatedClaimMatcherTest {
     }
 
     @Test
+    fun `a repeat by another speaker does not reuse the verdict`() {
+        val matcher = RepeatedClaimMatcher()
+        matcher.remember("je n'ai jamais voté ce texte", result, "Le Pen")
+
+        assertEquals(null, matcher.find("je n'ai jamais voté ce texte", "Attal"))
+        assertEquals(result, matcher.find("je n'ai jamais voté ce texte", "Le Pen"))
+    }
+
+    @Test
     fun `clear forgets everything`() {
         val matcher = RepeatedClaimMatcher()
         matcher.remember("le chômage a baissé de 10 % depuis 2017", result)

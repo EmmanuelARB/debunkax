@@ -54,7 +54,7 @@ Debunkax is a French-only Android app. While a Listening Session is running, it 
 
 ## Working conventions
 
-- Developer API keys go only in the gitignored `local.properties` (`debunkax.debug.anthropicKey`, `debunkax.debug.openRouterKey`). They reach debug builds and the Verdict bench only; the release build type hard-codes them empty. Never write a key anywhere else.
+- Developer API keys go only in the gitignored `local.properties` (`debunkax.debug.openRouterKey`). It reaches debug builds and the Verdict bench only; the release build type hard-codes it empty. Never write a key anywhere else.
 - Keep `CONTEXT.md` a glossary only: no implementation details. When a new domain term settles, add it there.
 - Write an ADR only for decisions that are hard to reverse, surprising and the result of a real trade-off (format: `.claude/skills/domain-modeling/ADR-FORMAT.md`).
 - Any UI text shown to users must be in French.

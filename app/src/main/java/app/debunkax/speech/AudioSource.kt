@@ -1,5 +1,6 @@
 package app.debunkax.speech
 
+import android.annotation.SuppressLint
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
@@ -38,6 +39,7 @@ internal const val SHERPA_CHUNK_SAMPLES = SHERPA_SAMPLE_RATE * CHUNK_MS / 1000
  * handed off chunk by chunk; nothing is buffered beyond the current chunk.
  */
 class MicAudioSource : AudioSource {
+    @SuppressLint("MissingPermission") // RECORD_AUDIO is granted by the UI layer before collecting.
     override fun chunks(): Flow<ShortArray> = flow {
         val channelConfig = AudioFormat.CHANNEL_IN_MONO
         val audioFormat = AudioFormat.ENCODING_PCM_16BIT

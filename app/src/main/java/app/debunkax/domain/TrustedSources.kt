@@ -33,6 +33,20 @@ object TrustedSources {
         TrustedSource("OCDE", "oecd.org", "Données internationales comparées."),
     )
 
+    /** True when [url] points into a Trusted Source (host, and path for entries such as eurostat). */
+    fun isTrusted(url: String): Boolean {
+        val uri = runCatching { java.net.URI(url.trim()) }.getOrNull() ?: return false
+        if (uri.scheme != "https" && uri.scheme != "http") return false
+        val host = uri.host?.lowercase() ?: return false
+        val path = uri.path.orEmpty()
+        return all.any { source ->
+            val hostPart = source.domain.substringBefore('/')
+            val pathPart = source.domain.substringAfter('/', "").let { if (it.isEmpty()) "" else "/$it" }
+            val hostOk = host == hostPart || host == "www.$hostPart" || (source.subdomains && host.endsWith(".$hostPart"))
+            hostOk && (pathPart.isEmpty() || path == pathPart || path.startsWith("$pathPart/"))
+        }
+    }
+
     val domains: List<String> = all.map { it.domain }
 
     /** For Exa: `*.domain` drops every subdomain but keeps the www. site (checked live). */

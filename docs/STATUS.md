@@ -26,9 +26,8 @@ The first version is feature-complete and runs end to end with a real provider o
 | ML Kit GenAI speech-to-text (primary engine) | Verified on a Galaxy Tab A11+ (Android 16, MediaTek, 8 GB, no AICore): basic mode (SODA offline, fr-FR) transcribes a debate played through speakers well, with punctuation and case. Finals can cover a whole paragraph, so they are split into sentences before the filter. Not yet tested: a phone with AICore, model download on a fresh device |
 | Claim filter (TF-IDF + LR) | Recall 0.88 / precision 0.55 on real sherpa segments (`spikes/claims/RESULTS.md`) |
 | OpenRouter client | Real Checks run from the app on the emulator: Haiku 4.5 through Exa, ZDR honoured (served by Amazon Bedrock), garbled segments correctly answered "not a Claim". Real Verdicts saved to History from the tablet (accurate, misleading) |
-| Claude client (direct API) | Unit-tested against MockWebServer only; **no real call yet** (no Anthropic key) |
 | OpenRouter OAuth PKCE sign-in | **Never run** end to end |
-| OpenRouter search engine | Native search + ZDR has no endpoint ("No endpoints found matching your data policy") for Claude and GPT, so every OpenRouter model now forces Exa. Exa kept citations inside include_domains for all 4 models in a live probe |
+| OpenRouter search engine | Native search + ZDR has no endpoint ("No endpoints found matching your data policy") for Claude and GPT, so every OpenRouter model forces Exa. Exa kept citations inside include_domains for all 4 models then probed in a live probe |
 | What reaches Exa | Verified live: the query is built from the last user message. The transcript window is now in the system message, so only the Claim reaches Exa (before, it leaked and pulled the search off-topic) |
 | Release build (R8, signing, arm64-only 37 MB, about 77 MB with the speaker model) | Verified on the emulator with a throwaway key (`-PemulatorAbi`) |
 | Background stop, process death, offline Pending Claims, 45-min endurance | Verified on the emulator. Background stop (home and back buttons) also verified on the tablet |
@@ -49,7 +48,7 @@ The first version is feature-complete and runs end to end with a real provider o
 ## Known open points
 
 - Every model misses about half the Claims that deserve an Alert (bench recall 38–69 %), and DeepSeek raises 2–6 false Alerts out of 20 depending on the run. Search results vary between runs, so one bench run can't rank prompts (see `spikes/verdicts/RESULTS.md`).
-- Party-group subdomains are excluded: `*.assemblee-nationale.fr` and `*.senat.fr` for Exa (checked live: the www. site stays), `www.` hosts for Claude's `allowed_domains` (from Anthropic's docs, not checked live).
+- Party-group subdomains are excluded: `*.assemblee-nationale.fr` and `*.senat.fr` for Exa (checked live: the www. site stays).
 
 - **Too many "false" Verdicts** (tablet run, DeepSeek V4.1 Flash with the search-free pre-check): 6 of 18 Verdicts were false, and several are doubtful. Some are false only because the sources say nothing ("aucune source ne confirme…"); some for a small approximation (21 % said as 20 %); some from stale or non-comparable data (2017 Insee average against a figure for car-owning households). False Alerts undermine trust. A stricter rule cut this to 4 of 18 on replay, and 0 of 6 on a later demo run. DeepSeek with reasoning did better but took up to 116 s per Check, so it's not usable — retested with `reasoning: {effort: low}` on the golden set: strictly worse (21/46 vs 24 exact, 3 lost Alerts, none gained) at 2× latency and 6× cost, so reasoning stays off (spikes/verdicts/MODELS.md). The Verdict bench (`spikes/verdicts/RESULTS.md`) still shows 4 false Alerts out of 20 for DeepSeek, against 1 for GPT-5.2.
 - Cost: that 7-minute run cost $0.15 for 18 Verdicts (about $0.008 each, almost all Exa); the pre-check is negligible. The earlier Haiku run cost about $0.18 for 3 minutes.

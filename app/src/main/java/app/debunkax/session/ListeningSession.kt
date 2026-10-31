@@ -138,7 +138,8 @@ class ListeningSession(
                 _state.update { it.copy(speechProblem = e) }
                 delay(modelRetryDelay.toMillis())
             } catch (e: SpeechFailure) {
-                _state.update { it.copy(speechProblem = e, listening = false) }
+                _state.update { it.copy(speechProblem = e) }
+                endOnAudioEnd(sessionId)
                 return
             }
         }
@@ -161,7 +162,7 @@ class ListeningSession(
     }
 
     private suspend fun handleClaim(sessionId: Long, claim: HeardClaim) {
-        repeats.find(claim.text)?.let { known ->
+        repeats.find(claim.text, claim.speaker)?.let { known ->
             val id = history.addClaim(sessionId, claim.text, claim.heardAt, known, claim.speaker)
             maybeAlert(id, claim, known)
             return
@@ -181,7 +182,7 @@ class ListeningSession(
             when (val outcome = concurrentChecks.withPermit { client.check(claim) }) {
                 CheckOutcome.NotAClaim -> Unit
                 is CheckOutcome.Checked -> {
-                    repeats.remember(claim.text, outcome.result)
+                    repeats.remember(claim.text, outcome.result, claim.speaker)
                     val id = history.addClaim(sessionId, claim.text, claim.heardAt, outcome.result, claim.speaker)
                     _state.update { if (it.checksPaused is ChecksPaused.Failed) it.copy(checksPaused = null) else it }
                     maybeAlert(id, claim, outcome.result)
@@ -198,6 +199,8 @@ class ListeningSession(
     }
 
     private fun maybeAlert(claimId: Long, claim: HeardClaim, result: CheckResult) {
+        // A Check that finishes after the session ended is still saved, but must not raise an Alert on the idle screen.
+        if (!_state.value.listening) return
         if (!AlertPolicy.shouldAlert(result.verdict, claim.heardAt, clock.instant())) return
         // Stays until dismissed or replaced by a newer Alert, so there's time to read it.
         // The quote is the sentence as heard; the rewrite only feeds the Check and the detail screen.

@@ -58,9 +58,9 @@ class OpenRouterCheckClient(
     override suspend fun check(claim: HeardClaim): CheckOutcome {
         // Most transcript sentences aren't Claims, and the Exa search costs far more than the model, so a
         // search-free pass sorts them first. It also rewrites the Claim into a clear sentence.
-        val rewritten = CheckPrompts.parseTriage(
+        val rewritten = parsing { CheckPrompts.parseTriage(
             send(system = CheckPrompts.triageSystem, user = CheckPrompts.triageUser(claim), maxResults = null),
-        ) ?: return CheckOutcome.NotAClaim
+        ) } ?: return CheckOutcome.NotAClaim
 
         // OpenRouter builds the Exa search query from the last user message, so the transcript goes in the
         // system message: only the rewritten Claim reaches Exa, and the search stays on the Claim's topic.
@@ -69,7 +69,7 @@ class OpenRouterCheckClient(
             user = CheckPrompts.claimLine(rewritten),
             maxResults = 2,
         )
-        return when (val outcome = CheckPrompts.parseCheck(text)) {
+        return when (val outcome = parsing { CheckPrompts.parseCheck(text) }) {
             is CheckOutcome.Checked -> CheckOutcome.Checked(outcome.result.copy(checkedText = rewritten))
             CheckOutcome.NotAClaim -> outcome
         }
@@ -81,8 +81,18 @@ class OpenRouterCheckClient(
             user = CheckPrompts.explainUser(claimText, result),
             maxResults = 4,
         )
-        return CheckPrompts.parseExplanation(text)
+        return parsing { CheckPrompts.parseExplanation(text) }
     }
+
+    /** A model reply that isn't the JSON we asked for is a [CheckFailure], never a crash. */
+    private inline fun <T> parsing(block: () -> T): T =
+        try {
+            block()
+        } catch (e: kotlinx.serialization.SerializationException) {
+            throw CheckFailure.Unexpected("Réponse illisible du fournisseur")
+        } catch (e: IllegalArgumentException) {
+            throw CheckFailure.Unexpected("Réponse illisible du fournisseur")
+        }
 
     /** Searches Trusted Sources when [maxResults] is set; without it, the request makes no web search. */
     private suspend fun send(system: String, user: String, maxResults: Int?): String = withContext(Dispatchers.IO) {
@@ -144,11 +154,21 @@ class OpenRouterCheckClient(
         }
 
         response.use {
-            val bodyText = it.body.string()
+            val bodyText = try {
+                it.body.string()
+            } catch (e: IOException) {
+                throw CheckFailure.Offline()
+            }
             if (!it.isSuccessful) {
                 throw CheckErrors.fromHttp(it.code, CheckErrors.extractMessage(bodyText))
             }
-            extractAssistantText(bodyText)
+            try {
+                extractAssistantText(bodyText)
+            } catch (e: IllegalArgumentException) { // SerializationException and IllegalStateException's cousins
+                throw CheckFailure.Unexpected("Réponse illisible du fournisseur")
+            } catch (e: IllegalStateException) {
+                throw CheckFailure.Unexpected("Réponse illisible du fournisseur")
+            }
         }
     }
 

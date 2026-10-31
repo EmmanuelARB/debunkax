@@ -1,5 +1,6 @@
 package app.debunkax.domain
 
+import app.debunkax.domain.TrustedSources
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -29,7 +30,7 @@ class CheckPromptsTest {
         val raw = """
             Voici le résultat de la vérification :
             ```json
-            {"is_claim": true, "verdict": "misleading", "evidence": "Hors outre-mer.", "context": "Trompeur.", "sources": []}
+            {"is_claim": true, "verdict": "misleading", "evidence": "Hors outre-mer.", "context": "Trompeur.", "sources": [{"title": "INSEE", "url": "https://www.insee.fr/z"}]}
             ```
             N'hésitez pas à demander plus de détails.
         """.trimIndent()
@@ -37,6 +38,27 @@ class CheckPromptsTest {
         val outcome = CheckPrompts.parseCheck(raw) as CheckOutcome.Checked
 
         assertEquals(Verdict.MISLEADING, outcome.result.verdict)
+    }
+
+    @Test
+    fun `sources outside the Trusted Sources are dropped and leave an Alert ungrounded`() {
+        val raw = """{"is_claim": true, "verdict": "false", "evidence": "Chiffre autre.", "context": "x",
+            "sources": [{"title": "Blog", "url": "https://blog.example.com/a"}, {"title": "faux", "url": "https://insee.fr.evil.com/a"}]}"""
+
+        val outcome = CheckPrompts.parseCheck(raw) as CheckOutcome.Checked
+
+        assertEquals(Verdict.UNVERIFIABLE, outcome.result.verdict)
+        assertTrue(outcome.result.sources.isEmpty())
+    }
+
+    @Test
+    fun `isTrusted honours subdomain and path rules`() {
+        assertTrue(TrustedSources.isTrusted("https://www.assemblee-nationale.fr/x"))
+        assertFalse(TrustedSources.isTrusted("https://groupe-communiste.assemblee-nationale.fr/x"))
+        assertTrue(TrustedSources.isTrusted("https://ec.europa.eu/eurostat/data"))
+        assertFalse(TrustedSources.isTrusted("https://ec.europa.eu/other"))
+        assertTrue(TrustedSources.isTrusted("https://dares.travail-emploi.gouv.fr/a"))
+        assertFalse(TrustedSources.isTrusted("not a url"))
     }
 
     @Test
@@ -85,12 +107,12 @@ class CheckPromptsTest {
     fun `a source without a title falls back to its URL`() {
         val raw = """
             {"is_claim": true, "verdict": "accurate", "context": "x",
-             "sources": [{"url": "https://afp.fr/y"}]}
+             "sources": [{"url": "https://afp.com/y"}]}
         """.trimIndent()
 
         val outcome = CheckPrompts.parseCheck(raw) as CheckOutcome.Checked
 
-        assertEquals(listOf(Source("https://afp.fr/y", "https://afp.fr/y")), outcome.result.sources)
+        assertEquals(listOf(Source("https://afp.com/y", "https://afp.com/y")), outcome.result.sources)
     }
 
     @Test

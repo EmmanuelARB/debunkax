@@ -1,5 +1,7 @@
 # Bring your own key, no backend of our own
 
+_Provider choice superseded by ADR 0005 (OpenRouter only). The rest stands._
+
 Debunkax has no server. The app calls the user's AI provider directly with the user's own key: Claude (key pasted, stored encrypted in Android Keystore) or OpenRouter (obtained through its OAuth PKCE flow). Every request asks for zero data retention where the provider supports it. We chose this over a shared key bundled in the app (extractable and abusable) and over our own proxy server (we'd pay per Check, and would have to prove the server stores nothing). The user pays for their own Checks and controls where their Claims go.
 
 ## Consequences

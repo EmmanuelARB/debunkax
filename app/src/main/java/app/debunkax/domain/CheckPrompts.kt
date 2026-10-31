@@ -104,15 +104,18 @@ object CheckPrompts {
             ?: throw CheckFailure.Unexpected("Verdict inconnu : ${dto.verdict}")
         // An Alert must rest on what a source says. Asking for it in the prompt alone didn't stop "no source mentions
         // it" from becoming lacks_context in recorded real sessions, so the rule is enforced here.
-        val grounded = verdict !in ALERT_VERDICTS || !dto.evidence.isNullOrBlank()
+        // Sources outside the Trusted Sources are the model's invention or a leak of the restriction: drop them, and
+        // an Alert that no longer rests on any Trusted Source becomes unverifiable.
+        val sources = dto.sources.filter { TrustedSources.isTrusted(it.url) }.map { it.toSource() }
+        val grounded = verdict !in ALERT_VERDICTS || (!dto.evidence.isNullOrBlank() && sources.isNotEmpty())
         return CheckOutcome.Checked(
-            CheckResult(if (grounded) verdict else Verdict.UNVERIFIABLE, dto.context.orEmpty().trim(), dto.sources.map { it.toSource() }),
+            CheckResult(if (grounded) verdict else Verdict.UNVERIFIABLE, dto.context.orEmpty().trim(), sources),
         )
     }
 
     fun parseExplanation(raw: String): Explanation {
         val dto = json.decodeFromString<ExplanationDto>(extractJson(raw))
-        return Explanation(dto.text.trim(), dto.sources.map { it.toSource() })
+        return Explanation(dto.text.trim(), dto.sources.filter { TrustedSources.isTrusted(it.url) }.map { it.toSource() })
     }
 
     private val ALERT_VERDICTS = setOf(Verdict.FALSE, Verdict.MISLEADING, Verdict.LACKS_CONTEXT)
