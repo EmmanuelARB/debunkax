@@ -1,0 +1,31 @@
+{
+  "model": "Geotrend/distilbert-base-fr-cased",
+  "threshold": 0.03286539390683174,
+  "val_metrics_at_threshold": {
+    "precision": 0.4217391304347826,
+    "recall": 0.9065420560747663,
+    "f1": 0.5756676557863502,
+    "tp": 97,
+    "fp": 133,
+    "fn": 10
+  },
+  "test_metrics_at_threshold": {
+    "precision": 0.4069767441860465,
+    "recall": 0.8928571428571429,
+    "f1": 0.5591054313099042,
+    "tp": 175,
+    "fp": 255,
+    "fn": 21
+  },
+  "test_metrics_at_0.5": {
+    "precision": 0.6617647058823529,
+    "recall": 0.45918367346938777,
+    "f1": 0.5421686746987951,
+    "tp": 90,
+    "fp": 46,
+    "fn": 106
+  },
+  "n_fit": 2102,
+  "n_val": 400,
+  "n_test": 720
+}

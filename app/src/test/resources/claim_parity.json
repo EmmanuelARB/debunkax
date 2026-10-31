@@ -1,0 +1,613 @@
+{
+  "threshold": 0.3300519448602217,
+  "cases": [
+    {
+      "sentence": "LE CHOMAGE A BAISSE DE VINGT POURCENT EN FRANCE DEPUIS DEUX MILLE VINGT",
+      "probability": 0.9520505930946096
+    },
+    {
+      "sentence": "LES OPERATIONS CONTRE LE NARCO TRAFIC ONT AUGMENTE VINGT QUATRE POURCENT ENTRE DEUX MILLE VINGT QUATRE ET DEUX MILLE VINGT CINQ",
+      "probability": 0.9030113787442205
+    },
+    {
+      "sentence": "LA DETTE PUBLIQUE A EXPLOSE SOUS CE GOUVERNEMENT ET DEPASSE TROIS MILLE MILLIARDS D EUROS",
+      "probability": 0.9380300856657152
+    },
+    {
+      "sentence": "LES MINEURS NON ACCOMPAGNES IL Y EN A AUJOURD'HUI DEUX MILLE DANS LE DEPARTEMENT",
+      "probability": 0.648240974215029
+    },
+    {
+      "sentence": "QUI CHACUN COUTE QUARANTE MILLE EUROS PAR AN A LA COLLECTIVITE",
+      "probability": 0.8323700259720501
+    },
+    {
+      "sentence": "L INFLATION A ATTEINT SON PLUS HAUT NIVEAU DEPUIS MILLE NEUF CENT QUATRE VINGT DIX",
+      "probability": 0.9177703404584143
+    },
+    {
+      "sentence": "LE DEFICIT PUBLIC DEPASSE CINQ POURCENT DU PIB CETTE ANNEE",
+      "probability": 0.7632019199812139
+    },
+    {
+      "sentence": "PRES DE NEUF SEPTUAGENAIRES SUR DIX VIVENT DANS LES DIX PAYS LES PLUS PUISSANTS DU MONDE",
+      "probability": 0.4394888831347321
+    },
+    {
+      "sentence": "LE NOMBRE DE CAMBRIOLAGES A RECULE DE QUINZE POURCENT DANS LE DEPARTEMENT EN UN AN",
+      "probability": 0.8613204521343091
+    },
+    {
+      "sentence": "NICE EST LA VILLE DE FRANCE DANS LAQUELLE IL Y A LE PLUS DE CAMERAS DE VIDEOSURVEILLANCE PAR HABITANT",
+      "probability": 0.8425766817807437
+    },
+    {
+      "sentence": "LE SALAIRE MEDIAN A PROGRESSE DE TROIS POURCENT L ANNEE DERNIERE SELON L INSEE",
+      "probability": 0.8669570015727
+    },
+    {
+      "sentence": "LA CROISSANCE DU PIB N A JAMAIS ETE AUSSI FAIBLE DEPUIS LA CRISE DE DEUX MILLE HUIT",
+      "probability": 0.952425891204203
+    },
+    {
+      "sentence": "LE POUVOIR D ACHAT DES MENAGES A RECULE DE DEUX POURCENT EN DEUX MILLE VINGT TROIS",
+      "probability": 0.8135396309034499
+    },
+    {
+      "sentence": "SELON UN RAPPORT DU SENAT LES DELAIS D ATTENTE AUX URGENCES ONT DOUBLE EN DIX ANS",
+      "probability": 0.8041673577379287
+    },
+    {
+      "sentence": "LA FRANCE COMPTE AUJOURD'HUI PRES DE SEPT MILLIONS DE PERSONNES EN SITUATION DE PAUVRETE",
+      "probability": 0.8711046273193966
+    },
+    {
+      "sentence": "LE NOMBRE DE NAISSANCES A CHUTE DE HUIT POURCENT PAR RAPPORT A L ANNEE PRECEDENTE",
+      "probability": 0.8819293553497044
+    },
+    {
+      "sentence": "DEPUIS DEUX MILLE DIX SEPT LE NOMBRE DE POLICIERS SUR LE TERRAIN A DIMINUE DE DIX MILLE POSTES",
+      "probability": 0.8995833653724148
+    },
+    {
+      "sentence": "LA PRODUCTION INDUSTRIELLE A RECULE DE QUATRE VIRGULE CINQ POURCENT AU DERNIER TRIMESTRE",
+      "probability": 0.9088026905038423
+    },
+    {
+      "sentence": "LE TAUX DE CHOMAGE DES JEUNES ATTEINT DIX SEPT POURCENT DANS CETTE REGION",
+      "probability": 0.49753630232854956
+    },
+    {
+      "sentence": "PLUS DE SIX CENT MILLE LOGEMENTS SONT AUJOURD'HUI VACANTS EN ILE DE FRANCE",
+      "probability": 0.9308935840385831
+    },
+    {
+      "sentence": "LA CRIMINALITE A AUGMENTE DE DOUZE POURCENT DANS LES GRANDES VILLES CETTE ANNEE",
+      "probability": 0.7314256144941184
+    },
+    {
+      "sentence": "L ESPERANCE DE VIE EN FRANCE A RECULE POUR LA DEUXIEME ANNEE CONSECUTIVE",
+      "probability": 0.7035344992313731
+    },
+    {
+      "sentence": "LE BUDGET DE LA DEFENSE A ETE MULTIPLIE PAR DEUX EN DIX ANS",
+      "probability": 0.9100463962663322
+    },
+    {
+      "sentence": "LES IMPOTS SUR LE REVENU ONT AUGMENTE DE TROIS POURCENT POUR LA CLASSE MOYENNE",
+      "probability": 0.8973659836953964
+    },
+    {
+      "sentence": "UN RAPPORT DE LA COUR DES COMPTES MONTRE QUE LES AIDES SOCIALES ONT TRIPLE DEPUIS DEUX MILLE DIX",
+      "probability": 0.8823602254465311
+    },
+    {
+      "sentence": "LE NOMBRE D ELEVES PAR CLASSE A BAISSE DE DEUX EN MOYENNE DEPUIS LA REFORME",
+      "probability": 0.9507285259828617
+    },
+    {
+      "sentence": "LA FRANCE EST LE PAYS EUROPEEN QUI ACCUEILLE LE PLUS DE DEMANDEURS D ASILE CETTE ANNEE",
+      "probability": 0.8902337396999418
+    },
+    {
+      "sentence": "LE PRIX DE L ELECTRICITE A AUGMENTE DE TRENTE POURCENT EN DEUX ANS",
+      "probability": 0.9002170944774139
+    },
+    {
+      "sentence": "LES EXPORTATIONS FRANCAISES ONT RECULE DE SIX POURCENT SUR LES DOUZE DERNIERS MOIS",
+      "probability": 0.8796863530372492
+    },
+    {
+      "sentence": "LA MOITIE DES FRANCAIS DECLARENT AVOIR DIFFICILEMENT BOUCLE LEUR BUDGET LE MOIS DERNIER",
+      "probability": 0.621275363983367
+    },
+    {
+      "sentence": "LE NOMBRE DE FAILLITES D ENTREPRISES A DOUBLE DEPUIS LE DEBUT DE L ANNEE",
+      "probability": 0.7847460233805424
+    },
+    {
+      "sentence": "TROIS QUARTS DES COMMUNES RURALES N ONT PLUS DE MEDECIN GENERALISTE",
+      "probability": 0.860408484050047
+    },
+    {
+      "sentence": "LE TAUX DE NATALITE EST AU PLUS BAS DEPUIS LA SECONDE GUERRE MONDIALE",
+      "probability": 0.7053378298471267
+    },
+    {
+      "sentence": "LA CONSOMMATION D ENERGIE A BAISSE DE HUIT POURCENT CET HIVER PAR RAPPORT A L AN DERNIER",
+      "probability": 0.9097956594214262
+    },
+    {
+      "sentence": "PRES DE QUARANTE POURCENT DES JEUNES DE CETTE COMMUNE SONT AU CHOMAGE",
+      "probability": 0.7479290083600837
+    },
+    {
+      "sentence": "LE GOUVERNEMENT A SUPPRIME DIX MILLE POSTES DE FONCTIONNAIRES DEPUIS SON ARRIVEE",
+      "probability": 0.7880377038272776
+    },
+    {
+      "sentence": "LA FRANCE A ENREGISTRE UN RECORD DE CANICULES CET ETE AVEC QUARANTE JOURS AU DESSUS DE TRENTE CINQ DEGRES",
+      "probability": 0.9151745030213038
+    },
+    {
+      "sentence": "LE TAUX DE REUSSITE AU BACCALAUREAT A BAISSE DE CINQ POINTS CETTE ANNEE",
+      "probability": 0.9043159030279321
+    },
+    {
+      "sentence": "LA CONSTITUTION PREVOIT QUE LE PREMIER MINISTRE SOIT NOMME PAR LE PRESIDENT DE LA REPUBLIQUE",
+      "probability": 0.7797745831116899
+    },
+    {
+      "sentence": "LE PROJET DE LOI SUR L IMMIGRATION SERA EXAMINE AU SENAT DEMAIN",
+      "probability": 0.753302679357336
+    },
+    {
+      "sentence": "SELON LES CHIFFRES DE LA DIRECTION GENERALE DES FINANCES PUBLIQUES LA FRAUDE FISCALE EST ESTIMEE A VINGT MILLIARDS D EUROS",
+      "probability": 0.8438384557158387
+    },
+    {
+      "sentence": "LE TEXTE A ETE ADOPTE PAR QUATRE CENT DIX VOIX CONTRE CENT TRENTE",
+      "probability": 0.9073217544688728
+    },
+    {
+      "sentence": "LA POPULATION DE CETTE VILLE A DOUBLE EN VINGT ANS",
+      "probability": 0.6026901240309477
+    },
+    {
+      "sentence": "UN QUART DES FRANCAIS ENVISAGENT DE QUITTER LE PAYS SELON UN SONDAGE RECENT",
+      "probability": 0.6653275363312564
+    },
+    {
+      "sentence": "LE NOMBRE D HOPITAUX DE PROXIMITE A DIMINUE DE MOITIE DEPUIS MILLE NEUF CENT QUATRE VINGT",
+      "probability": 0.9265930583387171
+    },
+    {
+      "sentence": "MERCI MADAME LA PRESIDENTE MONSIEUR LE DEPUTE",
+      "probability": 0.0776528845623114
+    },
+    {
+      "sentence": "VOUS DEVRIEZ AVOIR HONTE",
+      "probability": 0.06737288010703543
+    },
+    {
+      "sentence": "BONSOIR A TOUTES ET A TOUS ET BIENVENUE DANS CETTE EMISSION",
+      "probability": 0.13106631427457735
+    },
+    {
+      "sentence": "NOUS ALLONS FAIRE UNE COURTE PAUSE AVANT DE REPRENDRE CE DEBAT",
+      "probability": 0.15677979345706103
+    },
+    {
+      "sentence": "MERCI D AVOIR ACCEPTE NOTRE INVITATION CE SOIR",
+      "probability": 0.0942690770024476
+    },
+    {
+      "sentence": "JE VOUS EN PRIE MONSIEUR LE MINISTRE",
+      "probability": 0.20028439935304676
+    },
+    {
+      "sentence": "ON VA PASSER MAINTENANT A NOTRE PROCHAIN INVITE",
+      "probability": 0.16289675283577515
+    },
+    {
+      "sentence": "C EST UN PLAISIR DE VOUS RECEVOIR SUR CE PLATEAU",
+      "probability": 0.1067181221341575
+    },
+    {
+      "sentence": "RESTEZ AVEC NOUS APRES LA PUBLICITE",
+      "probability": 0.3265035027794881
+    },
+    {
+      "sentence": "JE VOUS REMERCIE POUR VOTRE ATTENTION",
+      "probability": 0.07414409012272413
+    },
+    {
+      "sentence": "ALLEZ Y JE VOUS ECOUTE",
+      "probability": 0.026767866595827847
+    },
+    {
+      "sentence": "ON REVIENT TOUT DE SUITE APRES CE COURT MOMENT",
+      "probability": 0.18073489936873424
+    },
+    {
+      "sentence": "LAISSEZ MOI TERMINER MA PHRASE S IL VOUS PLAIT",
+      "probability": 0.03750722255734049
+    },
+    {
+      "sentence": "C EST EXACTEMENT CE QUE JE DISAIS TOUT A L HEURE",
+      "probability": 0.07071227275205319
+    },
+    {
+      "sentence": "VOUS N AVEZ PAS REPONDU A MA QUESTION",
+      "probability": 0.24353574572366232
+    },
+    {
+      "sentence": "ARRETEZ DE ME COUPER LA PAROLE",
+      "probability": 0.048985451837482326
+    },
+    {
+      "sentence": "ON EST TOUS D ACCORD LA DESSUS JE PENSE",
+      "probability": 0.06913772298581404
+    },
+    {
+      "sentence": "CE N EST PAS LE SUJET DE CE SOIR",
+      "probability": 0.0977304275133645
+    },
+    {
+      "sentence": "REVENONS SI VOUS LE VOULEZ BIEN AU SUJET PRINCIPAL",
+      "probability": 0.22498847033942965
+    },
+    {
+      "sentence": "MERCI A TOUS NOS INVITES POUR CE DEBAT",
+      "probability": 0.05457885359519289
+    },
+    {
+      "sentence": "BONNE SOIREE A TOUTES ET A TOUS",
+      "probability": 0.11235641101740702
+    },
+    {
+      "sentence": "ON SE RETROUVE DEMAIN A LA MEME HEURE",
+      "probability": 0.5166960107099106
+    },
+    {
+      "sentence": "C EST UNE BONNE QUESTION",
+      "probability": 0.07152390260363464
+    },
+    {
+      "sentence": "JE NE SUIS PAS SUR DE COMPRENDRE VOTRE QUESTION",
+      "probability": 0.046528001344065165
+    },
+    {
+      "sentence": "PARDON JE VOUS AI COUPE LA PAROLE",
+      "probability": 0.04364250632154189
+    },
+    {
+      "sentence": "JE PENSE QU IL FAUT RENFORCER LA POLICE DANS CE QUARTIER",
+      "probability": 0.06679150946099817
+    },
+    {
+      "sentence": "A MON AVIS CE PROJET DE LOI VA DANS LE BON SENS",
+      "probability": 0.446861830889502
+    },
+    {
+      "sentence": "SELON MOI IL FAUDRAIT REVOIR ENTIEREMENT CE SYSTEME",
+      "probability": 0.06540023261845611
+    },
+    {
+      "sentence": "JE CROIS QUE NOUS DEVONS ECOUTER DAVANTAGE LES CITOYENS",
+      "probability": 0.1114551381270435
+    },
+    {
+      "sentence": "IL FAUDRAIT PEUT ETRE REFLECHIR A UNE AUTRE APPROCHE",
+      "probability": 0.07151020606216804
+    },
+    {
+      "sentence": "JE SOUHAITE QUE CE DEBAT SE PASSE DANS LE CALME",
+      "probability": 0.19950155504588765
+    },
+    {
+      "sentence": "NOUS VOULONS UNE SOCIETE PLUS JUSTE ET PLUS SOLIDAIRE",
+      "probability": 0.13603479442071126
+    },
+    {
+      "sentence": "JE PROPOSE QUE L ON TRAVAILLE ENSEMBLE SUR CE DOSSIER",
+      "probability": 0.14625517120193315
+    },
+    {
+      "sentence": "J ESPERE QUE CETTE REFORME PORTERA SES FRUITS",
+      "probability": 0.20944455730670966
+    },
+    {
+      "sentence": "IL FAUT ARRETER DE STIGMATISER CERTAINES CATEGORIES DE LA POPULATION",
+      "probability": 0.16008375639950154
+    },
+    {
+      "sentence": "JE PENSE SINCEREMENT QUE C EST UNE MAUVAISE IDEE",
+      "probability": 0.13287281948216906
+    },
+    {
+      "sentence": "A MON SENS CE N EST PAS LA BONNE PRIORITE POUR LE PAYS",
+      "probability": 0.17630486159892592
+    },
+    {
+      "sentence": "LE CHOMAGE A T IL VRAIMENT BAISSE DE DIX POURCENT ?",
+      "probability": 0.599589598618748
+    },
+    {
+      "sentence": "POURQUOI CE PROJET DE LOI A T IL ETE REPOUSSE ?",
+      "probability": 0.547576610388701
+    },
+    {
+      "sentence": "QUE COMPTEZ VOUS FAIRE POUR LES FAMILLES EN DIFFICULTE ?",
+      "probability": 0.13663040937474333
+    },
+    {
+      "sentence": "EST CE QUE VOUS ALLEZ VOUS REPRESENTER AUX PROCHAINES ELECTIONS ?",
+      "probability": 0.04732146901755257
+    },
+    {
+      "sentence": "COMMENT EXPLIQUEZ VOUS CETTE HAUSSE DES PRIX DE L ENERGIE ?",
+      "probability": 0.43345285020781005
+    },
+    {
+      "sentence": "LE CHOMAGE AUGMENTE ENCORE",
+      "probability": 0.40040329321601414
+    },
+    {
+      "sentence": "C EST TRES GRAVE",
+      "probability": 0.1993128882474476
+    },
+    {
+      "sentence": "MERCI BEAUCOUP MONSIEUR",
+      "probability": 0.017242963795983307
+    },
+    {
+      "sentence": "IL A RAISON SUR CE POINT",
+      "probability": 0.19330637632043934
+    },
+    {
+      "sentence": "CA SUFFIT MAINTENANT",
+      "probability": 0.07300732772885864
+    },
+    {
+      "sentence": "JE SUIS DEPUTE DE LA REPUBLIQUE EN MARCHE DEPUIS DEUX MILLE DIX SEPT",
+      "probability": 0.5139672132136718
+    },
+    {
+      "sentence": "JE SUIS PRESIDENT DE CE MOUVEMENT DEPUIS TROIS ANS",
+      "probability": 0.6116859450729871
+    },
+    {
+      "sentence": "VOUS ETES SENATEUR DE CE DEPARTEMENT DEPUIS LONGTEMPS",
+      "probability": 0.41059876491560876
+    },
+    {
+      "sentence": "JE REPRESENTE ICI LES ARTISANS ET LES COMMERCANTS DE LA REGION",
+      "probability": 0.35387811570449546
+    },
+    {
+      "sentence": "LA RAISON L EXAMEN D UNE LOI AU SENAT DEMAIN",
+      "probability": 0.689955400116845
+    },
+    {
+      "sentence": "LE VOTE AURA LIEU DEMAIN A QUATORZE HEURES A L ASSEMBLEE NATIONALE",
+      "probability": 0.7886876773024081
+    },
+    {
+      "sentence": "CETTE COMMISSION SE REUNIT UNE FOIS PAR MOIS DEPUIS DEUX MILLE VINGT ET UN",
+      "probability": 0.8797339815139048
+    },
+    {
+      "sentence": "LE TEXTE SERA EXAMINE EN DEUXIEME LECTURE LA SEMAINE PROCHAINE",
+      "probability": 0.4891105403606469
+    },
+    {
+      "sentence": "NOUS AVONS AUDITIONNE PLUS DE TRENTE EXPERTS SUR CE SUJET",
+      "probability": 0.5109579923279679
+    },
+    {
+      "sentence": "ON EST DANS UNE SITUATION COMPARABLE A CELLE D AVANT LA GUERRE DE QUATORZE",
+      "probability": 0.5352543617131004
+    },
+    {
+      "sentence": "CA ME RAPPELLE UN PEU CE QUI S EST PASSE DANS LES ANNEES QUATRE VINGT",
+      "probability": 0.5135225691533487
+    },
+    {
+      "sentence": "C EST UN PEU LA MEME AMBIANCE QU IL Y A VINGT ANS DANS CE PAYS",
+      "probability": 0.5183452571526691
+    },
+    {
+      "sentence": "JE CONSIDERE QUE LE SYSTEME A ETE MIS EN DIFFICULTE PAR UNE BAISSE DE VINGT POURCENT DES EFFECTIFS",
+      "probability": 0.890144588482591
+    },
+    {
+      "sentence": "A MON AVIS LE PROBLEME VIENT SURTOUT DE LA HAUSSE DE QUARANTE POURCENT DES LOYERS DEPUIS DIX ANS",
+      "probability": 0.8675653023259675
+    },
+    {
+      "sentence": "JE PENSE QUE C EST EN PARTIE DU AU FAIT QUE LE BUDGET A ETE REDUIT DE MOITIE",
+      "probability": 0.6993087090550715
+    },
+    {
+      "sentence": "IL Y A QUAND MEME NEUF PERSONNES SUR DIX QUI SONT CONCERNEES PAR CETTE MESURE",
+      "probability": 0.6757766960485738
+    },
+    {
+      "sentence": "ON PARLE QUAND MEME DE PRES DE CENT MILLE FAMILLES TOUCHEES PAR CETTE DECISION",
+      "probability": 0.5177157687986432
+    },
+    {
+      "sentence": "C EST TOUT DE MEME DEUX FOIS PLUS QUE L ANNEE DERNIERE",
+      "probability": 0.5278212393082001
+    },
+    {
+      "sentence": "ALORS SUR LE CHOMAGE ON A DES CHIFFRES QUI BAISSENT MAIS SUR LE POUVOIR D ACHAT C EST UNE AUTRE HISTOIRE ET IL FAUT EN PARLER FRANCHEMENT",
+      "probability": 0.4821417652514559
+    },
+    {
+      "sentence": "LE GOUVERNEMENT DIT QUE CA VA MIEUX MAIS SUR LE TERRAIN LES GENS NE LE RESSENTENT PAS DU TOUT ET C EST BIEN LE PROBLEME",
+      "probability": 0.2653837045446426
+    },
+    {
+      "sentence": "LA FRANCE A EXPORTE POUR PLUS DE CINQUANTE MILLIARDS D EUROS D ARMEMENT L ANNEE DERNIERE",
+      "probability": 0.9773968361416445
+    },
+    {
+      "sentence": "LE NOMBRE DE VEHICULES ELECTRIQUES VENDUS A TRIPLE EN TROIS ANS",
+      "probability": 0.7597727637905519
+    },
+    {
+      "sentence": "LA SURFACE DE FORET BRULEE A DOUBLE PAR RAPPORT A LA MOYENNE DES DIX DERNIERES ANNEES",
+      "probability": 0.7562805035422971
+    },
+    {
+      "sentence": "LE TAUX D INTERET DIRECTEUR DE LA BANQUE CENTRALE EUROPEENNE EST PASSE A QUATRE POURCENT",
+      "probability": 0.7755374112746615
+    },
+    {
+      "sentence": "PLUS DE LA MOITIE DES FRANCAIS SE DISENT INQUIETS POUR LEUR RETRAITE SELON UN SONDAGE RECENT",
+      "probability": 0.6782882772141918
+    },
+    {
+      "sentence": "LE NOMBRE DE PLACES EN CRECHE A AUGMENTE DE DIX MILLE DEPUIS DEUX MILLE VINGT DEUX",
+      "probability": 0.9034525712252942
+    },
+    {
+      "sentence": "LA DIRECTIVE EUROPEENNE IMPOSE UNE REDUCTION DE QUARANTE POURCENT DES EMISSIONS D ICI DEUX MILLE TRENTE",
+      "probability": 0.8496174149288406
+    },
+    {
+      "sentence": "SELON L ETUDE PUBLIEE CE MATIN LE NIVEAU DES OCEANS A AUGMENTE DE VINGT CENTIMETRES EN UN SIECLE",
+      "probability": 0.831775899046089
+    },
+    {
+      "sentence": "LE NOMBRE DE DEMANDEURS D EMPLOI DE LONGUE DUREE A RECULE DE SEPT POURCENT CETTE ANNEE",
+      "probability": 0.8407554448599527
+    },
+    {
+      "sentence": "LA PART DES ENERGIES RENOUVELABLES DANS LE MIX ENERGETIQUE A DOUBLE EN DIX ANS",
+      "probability": 0.6374087445923704
+    },
+    {
+      "sentence": "LE COUT MOYEN D UNE PLACE EN EHPAD A AUGMENTE DE QUINZE POURCENT EN CINQ ANS",
+      "probability": 0.8746846472006212
+    },
+    {
+      "sentence": "LA FRANCE COMPTE DESORMAIS PLUS DE SOIXANTE HUIT MILLIONS D HABITANTS",
+      "probability": 0.8779211574622863
+    },
+    {
+      "sentence": "UN RAPPORT PARLEMENTAIRE ESTIME LE COUT DE CETTE REFORME A TROIS MILLIARDS D EUROS PAR AN",
+      "probability": 0.9571620111146247
+    },
+    {
+      "sentence": "LE NOMBRE D ACCIDENTS DE LA ROUTE A BAISSE DE CINQ POURCENT L ANNEE DERNIERE",
+      "probability": 0.9164305000863875
+    },
+    {
+      "sentence": "LA PART DES MENAGES PROPRIETAIRES DE LEUR LOGEMENT A RECULE POUR LA PREMIERE FOIS DEPUIS VINGT ANS",
+      "probability": 0.7188945236575294
+    },
+    {
+      "sentence": "ON VA MAINTENANT DONNER LA PAROLE A NOTRE JOURNALISTE SUR PLACE",
+      "probability": 0.07419359326199898
+    },
+    {
+      "sentence": "MERCI A NOTRE REALISATEUR POUR CE REPORTAGE",
+      "probability": 0.19415818007837377
+    },
+    {
+      "sentence": "IL EST TEMPS DE CONCLURE CETTE EMISSION POUR CE SOIR",
+      "probability": 0.12797919244539815
+    },
+    {
+      "sentence": "NOUS REVIENDRONS SUR CE SUJET DANS UNE PROCHAINE EMISSION",
+      "probability": 0.25790763427570046
+    },
+    {
+      "sentence": "C EST TOUJOURS UN PLAISIR D ECHANGER AVEC VOUS SUR CE PLATEAU",
+      "probability": 0.20884456424906675
+    },
+    {
+      "sentence": "ON A ENCORE UNE MINUTE AVANT LA PUBLICITE",
+      "probability": 0.5864171365043516
+    },
+    {
+      "sentence": "JE VOUS PROPOSE DE FAIRE UN TOUR DE TABLE",
+      "probability": 0.11889068180675287
+    },
+    {
+      "sentence": "ECOUTONS CE QU EN PENSENT NOS AUDITEURS",
+      "probability": 0.1355104343945118
+    },
+    {
+      "sentence": "ON VA REGARDER ENSEMBLE CE REPORTAGE",
+      "probability": 0.028862149935802266
+    },
+    {
+      "sentence": "MERCI ENCORE D AVOIR REPONDU A NOS QUESTIONS CE SOIR",
+      "probability": 0.05143573151575506
+    },
+    {
+      "sentence": "CETTE QUESTION MERITE UN DEBAT A PART ENTIERE",
+      "probability": 0.14781315275269297
+    },
+    {
+      "sentence": "ON N A PLUS BEAUCOUP DE TEMPS ALORS SOYONS BREFS",
+      "probability": 0.26474640183304227
+    },
+    {
+      "sentence": "VOUS AVEZ LA PAROLE POUR CONCLURE",
+      "probability": 0.0882733214349798
+    },
+    {
+      "sentence": "C EST UN SUJET QUI NOUS TIENT TOUS A COEUR",
+      "probability": 0.21228992649353054
+    },
+    {
+      "sentence": "PASSONS MAINTENANT AUX QUESTIONS DU PUBLIC",
+      "probability": 0.11608308919836988
+    },
+    {
+      "sentence": "LE NOMBRE DE GREVES DANS LES TRANSPORTS A AUGMENTE DE QUARANTE POURCENT CETTE ANNEE",
+      "probability": 0.8658845590063928
+    },
+    {
+      "sentence": "LA FRANCE A PERDU DIX PLACES AU CLASSEMENT MONDIAL DE LA COMPETITIVITE EN CINQ ANS",
+      "probability": 0.8875571809828393
+    },
+    {
+      "sentence": "LE BUDGET DE LA CULTURE A ETE REDUIT DE HUIT POURCENT DANS CE PROJET DE LOI DE FINANCES",
+      "probability": 0.8979626166352113
+    },
+    {
+      "sentence": "PLUS DE TROIS MILLIONS DE FRANCAIS VIVENT AUJOURD'HUI SOUS LE SEUIL DE PAUVRETE",
+      "probability": 0.8645652140079597
+    },
+    {
+      "sentence": "LE PRIX MOYEN DU METRE CARRE A BAISSE DE DIX POURCENT DANS CETTE VILLE EN DEUX ANS",
+      "probability": 0.905141409745466
+    },
+    {
+      "sentence": "ON SE REVOIT TRES BIENTOT SUR CETTE MEME CHAINE",
+      "probability": 0.3029386648134344
+    },
+    {
+      "sentence": "JE VOUS SOUHAITE UNE EXCELLENTE SOIREE A TOUTES ET A TOUS",
+      "probability": 0.1290996469329851
+    },
+    {
+      "sentence": "CE SERA TOUT POUR AUJOURD'HUI MERCI DE NOUS AVOIR SUIVIS",
+      "probability": 0.06506451575556836
+    },
+    {
+      "sentence": "IL FAUDRAIT QUAND MEME QUE TOUT LE MONDE SE CALME UN PEU",
+      "probability": 0.19064915840382518
+    },
+    {
+      "sentence": "JE TROUVE CA PLUTOT ENCOURAGEANT COMME DEMARCHE",
+      "probability": 0.15603147467592354
+    }
+  ]
+}

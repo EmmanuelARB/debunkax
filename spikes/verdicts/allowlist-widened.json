@@ -1,0 +1,27 @@
+[
+  {
+    "id": "session26-guedj-refus-lfi",
+    "claim": "Jérôme Guedj a refusé un accord avec La France insoumise en 2024.",
+    "expected": "unverifiable"
+  },
+  {
+    "id": "session26-faure-refus-soutien-lfi",
+    "claim": "Olivier Faure a refusé d'être soutenu par La France insoumise.",
+    "expected": "unverifiable"
+  },
+  {
+    "id": "session26-faure-abrogation-promesse",
+    "claim": "Olivier Faure a dit qu'il abrogera la réforme des retraites et qu'il tiendra cet engagement.",
+    "expected": "unverifiable"
+  },
+  {
+    "id": "session26-emplois-espagne",
+    "claim": "En Espagne, 2 500 000 emplois ont été gagnés depuis 2018.",
+    "expected": "unverifiable"
+  },
+  {
+    "id": "session26-brun-pas-de-plainte",
+    "claim": "Aucune plainte n'a été déposée contre Philippe Brun.",
+    "expected": "unverifiable"
+  }
+]

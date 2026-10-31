@@ -1,0 +1,33 @@
+.venv/
+__pycache__/
+*.wav
+*.mp3
+*.m4a
+*.webm
+spikes/stt/models/
+spikes/stt/audio/
+spikes/speakers/audio/
+spikes/speakers/models/
+spikes/speakers/results/
+spikes/stt/results/
+.gradle/
+build/
+local.properties
+*.keystore
+*.jks
+keystore.properties
+.idea/
+*.iml
+.cxx/
+captures/
+.claude/worktrees/
+spikes/verdicts/results/
+
+# Speaker recognition model (40 MB), copied by spikes/speakers/export_prints.py
+app/src/main/assets/speakers/*.onnx
+.pi/
+
+# Maintainer-local notes, never published
+AGENTS.local.md
+docs/claude-session-history.md
+spikes/verdicts/sessions/
