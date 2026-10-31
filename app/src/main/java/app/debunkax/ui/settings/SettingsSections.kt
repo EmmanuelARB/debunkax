@@ -43,6 +43,7 @@ fun ProviderSection(
     openRouterModels: List<ProviderModel>,
     onSelectModel: (ProviderModel) -> Unit,
     onConnectOpenRouter: () -> Unit,
+    onDisconnectOpenRouter: () -> Unit = {},
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text("Fournisseur", style = MaterialTheme.typography.titleMedium)
@@ -52,6 +53,9 @@ fun ProviderSection(
                 Text("OpenRouter", style = MaterialTheme.typography.titleSmall)
                 Text(if (openRouterKeyStored) "Connecté à OpenRouter." else "Non connecté.")
                 Button(onClick = onConnectOpenRouter) { Text("Se connecter avec OpenRouter") }
+                if (openRouterKeyStored) {
+                    OutlinedButton(onClick = onDisconnectOpenRouter) { Text("Se déconnecter") }
+                }
                 ModelPicker(
                     label = "Modèle OpenRouter",
                     models = openRouterModels,

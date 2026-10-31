@@ -36,7 +36,7 @@ object TrustedSources {
     /** True when [url] points into a Trusted Source (host, and path for entries such as eurostat). */
     fun isTrusted(url: String): Boolean {
         val uri = runCatching { java.net.URI(url.trim()) }.getOrNull() ?: return false
-        if (uri.scheme != "https" && uri.scheme != "http") return false
+        if (uri.scheme != "https") return false
         val host = uri.host?.lowercase() ?: return false
         val path = uri.path.orEmpty()
         return all.any { source ->

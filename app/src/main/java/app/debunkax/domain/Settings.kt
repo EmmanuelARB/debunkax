@@ -25,6 +25,8 @@ data class Settings(
 interface SettingsRepository {
     val settings: Flow<Settings>
     suspend fun setProvider(provider: Provider, modelId: String)
+    /** Forgets the configured provider and model (e.g. on disconnect); the stored key is the KeyVault's business. */
+    suspend fun clearProvider()
     suspend fun setCheckLimit(limit: Int?)
 }
 

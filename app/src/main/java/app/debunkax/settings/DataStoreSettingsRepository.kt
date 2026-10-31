@@ -36,6 +36,13 @@ class DataStoreSettingsRepository(private val context: Context) : SettingsReposi
         }
     }
 
+    override suspend fun clearProvider() {
+        context.settingsDataStore.edit { prefs ->
+            prefs.remove(PROVIDER_KEY)
+            prefs.remove(MODEL_ID_KEY)
+        }
+    }
+
     override suspend fun setCheckLimit(limit: Int?) {
         context.settingsDataStore.edit { prefs ->
             if (limit == null) prefs.remove(CHECK_LIMIT_KEY) else prefs[CHECK_LIMIT_KEY] = limit

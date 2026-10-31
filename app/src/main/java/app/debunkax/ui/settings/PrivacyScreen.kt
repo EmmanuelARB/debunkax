@@ -45,7 +45,8 @@ fun PrivacyScreen(onBack: () -> Unit) {
                     "immédiatement écarté. Seules les affirmations détectées et leurs verdicts sont conservés " +
                     "sur le téléphone, dans l'Historique.\n\n" +
                     "L'orateur est reconnu à sa voix directement sur le téléphone, en la comparant aux voix " +
-                    "d'une vingtaine de responsables politiques, enregistrées à partir d'interventions publiques. " +
+                    "de 62 personnalités publiques (responsables politiques et journalistes), enregistrées à partir " +
+                    "d'interventions publiques. " +
                     "Dans le doute, il reste « non identifié ».\n\n" +
                     "Pour chaque vérification, seuls l'affirmation, son orateur s'il est reconnu et environ les " +
                     "30 dernières secondes du contexte entendu sont envoyés à OpenRouter, avec votre propre clé.\n\n" +

@@ -100,6 +100,7 @@ fun SettingsScreen(
                         CustomTabsIntent.Builder().build().launchUrl(context, uri)
                     }
                 },
+                onDisconnectOpenRouter = viewModel::disconnectOpenRouter,
             )
 
             CheckLimitSection(checkLimit = settings.checkLimit, onSetCheckLimit = viewModel::setCheckLimit)

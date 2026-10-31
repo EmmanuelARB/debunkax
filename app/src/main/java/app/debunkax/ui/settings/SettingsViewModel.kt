@@ -51,6 +51,15 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
         viewModelScope.launch { container.settings.setProvider(model.provider, model.id) }
     }
 
+    /** Deletes the stored OpenRouter key and forgets the provider, so no Check can be sent until reconnecting. */
+    fun disconnectOpenRouter() {
+        viewModelScope.launch {
+            container.keyVault.remove(Provider.OPENROUTER)
+            container.settings.clearProvider()
+            refreshKeyStatus()
+        }
+    }
+
     fun setCheckLimit(limit: Int?) {
         viewModelScope.launch { container.settings.setCheckLimit(limit) }
     }

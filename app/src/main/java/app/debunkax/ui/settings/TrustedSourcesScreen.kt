@@ -39,8 +39,8 @@ fun TrustedSourcesScreen(onBack: () -> Unit) {
         LazyColumn(Modifier.fillMaxSize().padding(padding)) {
             item {
                 Text(
-                    "Cette liste est fixe et identique pour tous les utilisateurs : les vérifications s'appuient " +
-                        "d'abord sur ces sources avant de recourir à une recherche web plus large.",
+                    "Cette liste est fixe et identique pour tous les utilisateurs : la recherche web de chaque " +
+                        "vérification est strictement limitée à ces sources, sans aucun recours à une recherche plus large.",
                     modifier = Modifier.padding(16.dp),
                     style = MaterialTheme.typography.bodyMedium,
                 )
