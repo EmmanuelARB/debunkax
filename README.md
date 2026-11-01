@@ -2,6 +2,24 @@
 
 Debunkax is a French-only Android app. While a Listening Session is running, it transcribes the French speech it hears (mostly TV political debates, shows and journalism), detects Claims on the device, checks them with the user's own AI provider, and raises Alerts for false, misleading or lacks-context Verdicts.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/session-alert-false.jpg" width="30%" alt="Alert with a false Verdict during a Listening Session"><br>
+  An Alert with a <b>false</b> Verdict during a Listening Session<br><br>
+  <img src="docs/screenshots/session-alert-misleading.jpg" width="30%" alt="Alert with a misleading Verdict"><br>
+  An Alert with a <b>misleading</b> Verdict<br><br>
+  <img src="docs/screenshots/session-alert-lacks-context.jpg" width="30%" alt="Alert with a lacks-context Verdict"><br>
+  An Alert with a <b>lacks-context</b> Verdict
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/history.jpg" width="45%" alt="History of checked Claims with their Verdicts"><br>
+  The History: every checked Claim with its Verdict and Speaker<br><br>
+  <img src="docs/screenshots/claim-detail.jpg" width="45%" alt="Claim detail with sources and Explanation"><br>
+  A Claim's detail: Verdict, Trusted Sources, and the sourced Explanation
+</p>
+
 ## How it works
 
 Everything runs on a single phone. The pipeline:
