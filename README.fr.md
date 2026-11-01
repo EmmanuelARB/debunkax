@@ -4,21 +4,22 @@ Debunkax est une application Android uniquement en français. Pendant une sessio
 
 ## Captures d'écran
 
-<p align="center">
-  <img src="docs/screenshots/session-alert-false.jpg" width="30%" alt="Alerte avec un verdict faux pendant une session d'écoute"><br>
-  Une alerte au verdict <b>faux</b> pendant une session d'écoute<br><br>
-  <img src="docs/screenshots/session-alert-misleading.jpg" width="30%" alt="Alerte avec un verdict trompeur"><br>
-  Une alerte au verdict <b>trompeur</b><br><br>
-  <img src="docs/screenshots/session-alert-lacks-context.jpg" width="30%" alt="Alerte avec un verdict manque de contexte"><br>
-  Une alerte au verdict <b>manque de contexte</b>
-</p>
-
-<p align="center">
-  <img src="docs/screenshots/history.jpg" width="45%" alt="Historique des affirmations vérifiées avec leurs verdicts"><br>
-  L'historique : chaque affirmation vérifiée avec son verdict et son orateur<br><br>
-  <img src="docs/screenshots/claim-detail.jpg" width="45%" alt="Détail d'une affirmation avec sources et explication"><br>
-  Le détail d'une affirmation : verdict, sources de confiance et explication sourcée
-</p>
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/session-alert-false.jpg" width="170" alt="Alerte avec un verdict faux pendant une session d'écoute"></td>
+    <td align="center"><img src="docs/screenshots/session-alert-misleading.jpg" width="170" alt="Alerte avec un verdict trompeur"></td>
+    <td align="center"><img src="docs/screenshots/session-alert-lacks-context.jpg" width="170" alt="Alerte avec un verdict manque de contexte"></td>
+    <td align="center"><img src="docs/screenshots/history.jpg" width="170" alt="Historique des affirmations vérifiées avec leurs verdicts"></td>
+    <td align="center"><img src="docs/screenshots/claim-detail.jpg" width="170" alt="Détail d'une affirmation avec sources et explication"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Verdict <b>faux</b></sub></td>
+    <td align="center"><sub>Verdict <b>trompeur</b></sub></td>
+    <td align="center"><sub>Verdict <b>manque de contexte</b></sub></td>
+    <td align="center"><sub>Historique</sub></td>
+    <td align="center"><sub>Détail d'une affirmation</sub></td>
+  </tr>
+</table>
 
 ## Fonctionnement
 

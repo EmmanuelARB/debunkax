@@ -4,21 +4,22 @@ Debunkax is a French-only Android app. While a Listening Session is running, it 
 
 ## Screenshots
 
-<p align="center">
-  <img src="docs/screenshots/session-alert-false.jpg" width="30%" alt="Alert with a false Verdict during a Listening Session"><br>
-  An Alert with a <b>false</b> Verdict during a Listening Session<br><br>
-  <img src="docs/screenshots/session-alert-misleading.jpg" width="30%" alt="Alert with a misleading Verdict"><br>
-  An Alert with a <b>misleading</b> Verdict<br><br>
-  <img src="docs/screenshots/session-alert-lacks-context.jpg" width="30%" alt="Alert with a lacks-context Verdict"><br>
-  An Alert with a <b>lacks-context</b> Verdict
-</p>
-
-<p align="center">
-  <img src="docs/screenshots/history.jpg" width="45%" alt="History of checked Claims with their Verdicts"><br>
-  The History: every checked Claim with its Verdict and Speaker<br><br>
-  <img src="docs/screenshots/claim-detail.jpg" width="45%" alt="Claim detail with sources and Explanation"><br>
-  A Claim's detail: Verdict, Trusted Sources, and the sourced Explanation
-</p>
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/session-alert-false.jpg" width="170" alt="Alert with a false Verdict during a Listening Session"></td>
+    <td align="center"><img src="docs/screenshots/session-alert-misleading.jpg" width="170" alt="Alert with a misleading Verdict"></td>
+    <td align="center"><img src="docs/screenshots/session-alert-lacks-context.jpg" width="170" alt="Alert with a lacks-context Verdict"></td>
+    <td align="center"><img src="docs/screenshots/history.jpg" width="170" alt="History of checked Claims with their Verdicts"></td>
+    <td align="center"><img src="docs/screenshots/claim-detail.jpg" width="170" alt="Claim detail with sources and Explanation"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub><b>false</b> Verdict</sub></td>
+    <td align="center"><sub><b>misleading</b> Verdict</sub></td>
+    <td align="center"><sub><b>lacks-context</b> Verdict</sub></td>
+    <td align="center"><sub>History</sub></td>
+    <td align="center"><sub>Claim detail</sub></td>
+  </tr>
+</table>
 
 ## How it works
 
