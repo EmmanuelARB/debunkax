@@ -23,11 +23,17 @@ final class ScriptedSpeechEngineTests: XCTestCase {
             "Le déficit public dépasse le seuil européen",
         ]
         let time = VirtualTime()
-        let engine = ScriptedSpeechEngine(lines: lines, interval: interval, sleep: time.sleeper)
+        // The sleeper returns at once, so the engine runs ahead of this loop and buffers segments:
+        // read each segment's time from its `at`, stamped by the virtual clock when it was emitted.
+        let engine = ScriptedSpeechEngine(
+            lines: lines, interval: interval,
+            now: { Date(timeIntervalSince1970: time.seconds) },
+            sleep: time.sleeper
+        )
 
         var recorded: [Recorded] = []
         for try await segment in engine.transcribe() {
-            recorded.append(Recorded(segment: segment, atSeconds: time.seconds))
+            recorded.append(Recorded(segment: segment, atSeconds: segment.at.timeIntervalSince1970))
         }
 
         XCTAssertEqual(recorded.count, 4)
