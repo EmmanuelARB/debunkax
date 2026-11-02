@@ -1,0 +1,5 @@
+// Debug configuration. Developer secrets go in the untracked Debug.local.xcconfig next to this file, e.g.
+//   OPENROUTER_DEBUG_KEY = sk-or-v1-...
+// It reaches Debug builds only (Info.plist -> AppContainer, under #if DEBUG); Release.xcconfig leaves it empty.
+OPENROUTER_DEBUG_KEY =
+#include? "Debug.local.xcconfig"

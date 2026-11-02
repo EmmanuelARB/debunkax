@@ -1,0 +1,2 @@
+// Release configuration. The developer key is hard-coded empty: it never reaches a release build.
+OPENROUTER_DEBUG_KEY =

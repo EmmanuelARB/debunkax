@@ -1,0 +1,120 @@
+# XcodeGen spec: `cd ios && xcodegen generate` (see README for the whole build). Nothing here has been built on a Mac yet.
+#
+# Prerequisites in ios/Vendor/ (gitignored, made by scripts/build-sherpa.sh): sherpa-onnx.xcframework,
+# onnxruntime.xcframework and SherpaOnnx.swift. Run spikes/speakers/export_prints.py first so that
+# app/src/main/assets/speakers holds prints.json and titanet_small.onnx.
+name: Debunkax
+
+options:
+  bundleIdPrefix: app.debunkax
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "26.0"
+
+configs:
+  Debug: debug
+  Release: release
+
+packages:
+  DebunkaxKit:
+    path: DebunkaxKit
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+
+targets:
+  Debunkax:
+    type: application
+    platform: iOS
+    deploymentTarget: "26.0"
+
+    # Debug.xcconfig optionally includes the untracked Debug.local.xcconfig (OPENROUTER_DEBUG_KEY);
+    # Release.xcconfig keeps the key empty.
+    configFiles:
+      Debug: Debunkax/App/Debug.xcconfig
+      Release: Debunkax/App/Release.xcconfig
+
+    sources:
+      - path: Debunkax
+        excludes:
+          - "**/.gitkeep"
+          - "**/*.xcconfig"
+          - "**/Info.plist"
+      # The official sherpa-onnx Swift wrapper (vendored by scripts/build-sherpa.sh). It predates Swift 6 strict
+      # concurrency, hence the per-file Swift 5 flag. UNVERIFIED: Xcode may ignore per-file flags for Swift sources;
+      # if the first build reports concurrency errors in SherpaOnnx.swift, set SWIFT_VERSION to "5" for this target
+      # (the app code also compiles in Swift 5 mode).
+      - path: Vendor/SherpaOnnx.swift
+        optional: true
+        compilerFlags:
+          - "-swift-version"
+          - "5"
+      # Resources live in the Android project and are referenced from there (single source, nothing duplicated).
+      - path: ../app/src/main/assets/claim_model.json
+        buildPhase: resources
+      - path: ../app/src/main/assets/speakers
+        type: folder
+        buildPhase: resources
+        optional: true
+
+    dependencies:
+      - package: DebunkaxKit
+        product: DebunkaxCore
+      - package: DebunkaxKit
+        product: DebunkaxData
+      - framework: Vendor/sherpa-onnx.xcframework
+        embed: false
+      - framework: Vendor/onnxruntime.xcframework
+        embed: false
+      - sdk: libbz2.tbd
+      - sdk: Accelerate.framework
+      - sdk: CoreML.framework
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.debunkax
+        PRODUCT_NAME: Debunkax
+        # Same as versionName / versionCode in app/build.gradle.kts.
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "6.0"
+        IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_FILE: Debunkax/App/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        SWIFT_OBJC_BRIDGING_HEADER: Debunkax/App/Debunkax-Bridging-Header.h
+        OTHER_LDFLAGS:
+          - "$(inherited)"
+          - "-lc++"
+        CODE_SIGN_STYLE: Automatic
+        # Set your team in Xcode (or here) before running on a device.
+        DEVELOPMENT_TEAM: ""
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG"
+        Release:
+          SWIFT_COMPILATION_MODE: wholemodule
+
+schemes:
+  Debunkax:
+    build:
+      targets:
+        Debunkax: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+
+  # Runs the DebunkaxKit package tests (the ports of the JVM unit tests). The same tests run from a terminal with
+  # `cd ios/DebunkaxKit && swift test`.
+  DebunkaxKitTests:
+    build:
+      targets:
+        Debunkax: build
+    test:
+      config: Debug
+      targets:
+        - package: DebunkaxKit/DebunkaxCoreTests
+        - package: DebunkaxKit/DebunkaxDataTests

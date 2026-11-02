@@ -1,0 +1,7 @@
+Vendor/
+*.xcodeproj
+DerivedData/
+.build/
+*.xcconfig.local
+.build-sherpa/
+*.local.xcconfig

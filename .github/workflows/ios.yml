@@ -1,0 +1,65 @@
+name: iOS
+
+on:
+  pull_request:
+    paths: ["ios/**", "app/src/main/assets/**", ".github/workflows/ios.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package-tests:
+    name: DebunkaxKit tests
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - name: Xcode version
+        run: xcodebuild -version && swift --version
+      - name: swift test
+        working-directory: ios/DebunkaxKit
+        run: swift test
+
+  app-build:
+    name: App build (simulator)
+    runs-on: macos-26
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - name: Restore sherpa-onnx build
+        id: sherpa-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ios/Vendor
+          key: sherpa-${{ runner.os }}-${{ hashFiles('ios/scripts/build-sherpa.sh') }}
+      - name: Build sherpa-onnx
+        if: steps.sherpa-cache.outputs.cache-hit != 'true'
+        run: |
+          command -v wget || brew install wget
+          ios/scripts/build-sherpa.sh
+      # Saved right away, so a failing app build doesn't throw away the long sherpa-onnx build.
+      - name: Save sherpa-onnx build
+        if: steps.sherpa-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ios/Vendor
+          key: ${{ steps.sherpa-cache.outputs.cache-primary-key }}
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate the Xcode project
+        working-directory: ios
+        run: xcodegen generate
+      - name: Build the app for the simulator
+        working-directory: ios
+        run: |
+          xcodebuild build \
+            -project Debunkax.xcodeproj \
+            -scheme Debunkax \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO
