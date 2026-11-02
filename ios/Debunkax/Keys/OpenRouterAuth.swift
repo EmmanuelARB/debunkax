@@ -12,7 +12,7 @@ import UIKit
 /// Unlike Android, the pending code_verifier is only kept in memory: `ASWebAuthenticationSession`
 /// hands the callback back to this very call, in-process, so there is no app relaunch to survive
 /// and nothing secret needs to touch the disk. It goes out of scope once `signIn()` returns.
-final class OpenRouterAuth {
+final class OpenRouterAuth: Sendable {
     // Verified against https://openrouter.ai/docs/use-cases/oauth-pkce.
     static let callbackURL = "debunkax://oauth/openrouter"
     static let callbackScheme = "debunkax"
