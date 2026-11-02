@@ -22,7 +22,6 @@ final class OpenRouterAuth {
     private let session: URLSession
     private let authURL: String
     private let exchangeURL: String
-    private let presentation = PresentationContext()
 
     init(
         session: URLSession = .shared,
@@ -65,10 +64,13 @@ final class OpenRouterAuth {
 
     @MainActor
     private func authenticate(_ url: URL) async throws -> URL {
-        try await withCheckedThrowingContinuation { continuation in
+        // The session holds its presentation provider weakly: the completion handler keeps it alive until the end.
+        let presentation = PresentationContext()
+        return try await withCheckedThrowingContinuation { continuation in
             let webSession = ASWebAuthenticationSession(
                 url: url, callbackURLScheme: Self.callbackScheme
             ) { callback, error in
+                withExtendedLifetime(presentation) {}
                 if let callback {
                     continuation.resume(returning: callback)
                 } else if let error = error as? ASWebAuthenticationSessionError, error.code == .canceledLogin {
@@ -129,6 +131,7 @@ enum OpenRouterAuthError: Error, LocalizedError {
     }
 }
 
+@MainActor
 private final class PresentationContext: NSObject, ASWebAuthenticationPresentationContextProviding {
     @MainActor
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
