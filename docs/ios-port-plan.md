@@ -67,7 +67,7 @@ Public Swift names mirror the Kotlin ones (Verdict, HeardClaim, CheckResult, Che
 - Network exits: Checks to OpenRouter (ZDR requested), the OpenRouter OAuth exchange, the one-time sherpa model GET. New on iOS: Apple's own on-device speech asset download via `AssetInventory` (system-managed, sends no user data) — recorded in the ADR and in AGENTS.md. No analytics, no crash reporting (no third-party SDK at all).
 - Restricted search only, single provider and model (ADR 0001, 0005), Speaker only when recognised (ADR 0003), Addressee rules (ADR 0006), French only.
 - History, settings and the sherpa model live in Application Support with `isExcludedFromBackup = true` (mirrors `data_extraction_rules.xml`).
-- Debug-only switches ("Mode démo", "Démo audio réelle" reading `Documents/demo.wav`) compiled under `#if DEBUG` only; the developer OpenRouter key comes from an untracked `ios/Debunkax/App/Debug.xcconfig.local` in debug builds only, empty in release.
+- Debug-only switches ("Mode démo", "Démo audio réelle" reading `Documents/demo.wav`) compiled under `#if DEBUG` only; the developer OpenRouter key comes from an untracked `ios/Debunkax/App/Debug.local.xcconfig` in debug builds only, empty in release.
 
 ## Work packages
 
@@ -85,3 +85,7 @@ A final review pass (by the maintainer session) checks cross-package API consist
 ## Not verified, by construction
 
 Everything. Known risks for the first Mac build: Swift 6 strict-concurrency errors, the exact SpeechAnalyzer/AssetInventory API shapes (iOS 26 SDK), the sherpa-onnx xcframework build and its Swift wrapper version, AVAudioConverter format edge cases, XcodeGen resource paths outside `ios/`.
+
+## Outcome
+
+The six work packages are written and committed, but nothing has been compiled or run. The decision is recorded in `docs/adr/0007-ios-port.md`, the current state and known first-build risks in the "iOS port" section of `docs/STATUS.md`, and the build instructions in `ios/README.md`. Where this plan and the code differ (for example the developer key file is `Debug.local.xcconfig`, not `Debug.local.xcconfig`), the code and those documents win.
