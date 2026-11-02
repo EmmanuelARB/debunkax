@@ -63,26 +63,27 @@ public final class TfidfClaimDetector: ClaimDetector {
 
         var vocabSize: Int { idf.count }
 
-        /// Sparse, L2-normalized TF-IDF vector as (vocab index -> weight) for in-vocabulary n-grams.
-        func tfidf(_ text: String) -> [Int: Double] {
+        /// Sparse, L2-normalized TF-IDF vector as (vocab index, weight) pairs for in-vocabulary n-grams, by index.
+        /// Sorted so the floating-point sums run in the same order every time: a Swift Dictionary's iteration order
+        /// can differ between two instances holding the same keys, which changed the score's last bits.
+        func tfidf(_ text: String) -> [(index: Int, weight: Double)] {
             var counts: [Int: Int] = [:]
             for gram in ngrams(text) {
                 guard let index = vocab[gram] else { continue }
                 counts[index, default: 0] += 1
             }
-            if counts.isEmpty { return [:] }
-            var weights: [Int: Double] = [:]
+            if counts.isEmpty { return [] }
+            var weights: [(index: Int, weight: Double)] = []
             weights.reserveCapacity(counts.count)
             var normSquared = 0.0
-            for (index, count) in counts {
+            for (index, count) in counts.sorted(by: { $0.key < $1.key }) {
                 let weight = (1.0 + log(Double(count))) * idf[index]
-                weights[index] = weight
+                weights.append((index, weight))
                 normSquared += weight * weight
             }
-            if normSquared == 0.0 { return [:] }
+            if normSquared == 0.0 { return [] }
             let norm = normSquared.squareRoot()
-            for index in weights.keys { weights[index]! /= norm }
-            return weights
+            return weights.map { ($0.index, $0.weight / norm) }
         }
 
         private func ngrams(_ text: String) -> [String] { isChar ? charNgrams(text) : wordNgrams(text) }
