@@ -3,3 +3,4 @@ Vendor/
 DerivedData/
 .build/
 *.xcconfig.local
+.build-sherpa/
