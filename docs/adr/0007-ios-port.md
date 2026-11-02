@@ -1,6 +1,6 @@
 # iOS is a native Swift/SwiftUI port, microphone only
 
-The app now also targets iPhone and iPad, as a native Swift 6 / SwiftUI project in `ios/` next to the Android `app/`. Same product, same rules (AGENTS.md), same glossary, same bundled assets (`claim_model.json`, the speaker model and prints are read from `app/src/main/assets/`). The port was written without a Mac or Swift toolchain: **nothing in `ios/` has been compiled, run or tested yet** (see `docs/STATUS.md`).
+The app now also targets iPhone and iPad, as a native Swift 6 / SwiftUI project in `ios/` next to the Android `app/`. Same product, same rules (AGENTS.md), same glossary, same bundled assets (`claim_model.json`, the speaker model and prints are read from `app/src/main/assets/`). The port was written without a Mac or Swift toolchain; it is now built and unit-tested in CI on a macOS runner but has not been run yet (see `docs/STATUS.md`).
 
 ## Considered options
 

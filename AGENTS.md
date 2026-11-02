@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Debunkax is a French-only app for Android and iOS (the iOS port, in `ios/`, has never been compiled or run: ADR 0007, `docs/STATUS.md`). While a Listening Session is running, it transcribes the French speech it hears (mostly TV political debates, shows and journalism), detects Claims on the device, checks them with the user's own AI provider, and raises Alerts for false, misleading or lacks-context Verdicts.
+Debunkax is a French-only app for Android and iOS (the iOS port, in `ios/`, compiles and passes its unit tests in CI but has never been run: ADR 0007, `docs/STATUS.md`). While a Listening Session is running, it transcribes the French speech it hears (mostly TV political debates, shows and journalism), detects Claims on the device, checks them with the user's own AI provider, and raises Alerts for false, misleading or lacks-context Verdicts.
 
 ## Read first
 
@@ -22,7 +22,7 @@ Debunkax is a French-only app for Android and iOS (the iOS port, in `ios/`, has 
 ## Stack
 
 - Android: Kotlin, Jetpack Compose, native. minSdk 31 (Android 12), target devices with about 6 GB of RAM or more.
-- iOS (ADR 0007): Swift 6, SwiftUI, native, in `ios/`. iOS 26 minimum. Project built from an XcodeGen spec. Never compiled yet.
+- iOS (ADR 0007): Swift 6, SwiftUI, native, in `ios/`. iOS 26 minimum. Project built from an XcodeGen spec. Built and unit-tested in CI (`.github/workflows/ios.yml`, macOS runner), never run on a simulator or device yet.
 - Speech-to-text on the phone: ML Kit GenAI Speech Recognition (fr-FR) on Android, Apple SpeechAnalyzer/SpeechTranscriber (fr-FR) on iOS. Fallback on both: sherpa-onnx streaming zipformer (Moonshine has no French model).
 - Claim filter on the phone: TF-IDF + logistic regression in pure Kotlin, and in pure Swift on iOS (`TfidfClaimDetector`, model in `assets/claim_model.json`, shared, trained by `spikes/claims/`).
 - Distribution: Android: signed APK, direct download (no Play Store yet). iOS: TestFlight / App Store.
@@ -56,7 +56,7 @@ iOS, `ios/` (names mirror the Kotlin ones):
 - `ANDROID_SERIAL=emulator-5554 ./gradlew connectedDebugAndroidTest`: instrumented Compose tests, using the test overrides in `AppContainer`.
 - `./gradlew assembleRelease`: arm64-only. Add `-PemulatorAbi` to include x86_64 for smoke tests. Signing reads `keystore.properties` (see `docs/release.md`).
 - `./gradlew testDebugUnitTest --tests '*VerdictBench*' -Pbench`: the paid Verdict bench (`spikes/verdicts/README.md`).
-- iOS, on a Mac with Xcode 26 (see `ios/README.md`; none of this has been run yet): run `spikes/speakers/export_prints.py` first, then `ios/scripts/build-sherpa.sh`, `xcodegen` in `ios/`, `swift test` in `ios/DebunkaxKit`, and `xcodebuild -project ios/Debunkax.xcodeproj -scheme Debunkax ...` for the app.
+- iOS, on a Mac with Xcode 26 (see `ios/README.md`; CI runs the same steps, without the speaker export): run `spikes/speakers/export_prints.py` first, then `ios/scripts/build-sherpa.sh`, `xcodegen` in `ios/`, `swift test` in `ios/DebunkaxKit`, and `xcodebuild -project ios/Debunkax.xcodeproj -scheme Debunkax ...` for the app.
 - Debug-only switches in Réglages: "Mode démo" (scripted transcript and fake Verdicts) and "Démo audio réelle" (replays `files/demo.wav` through ML Kit, or sherpa-onnx where ML Kit is unsupported, e.g. emulators).
 
 ## Working conventions

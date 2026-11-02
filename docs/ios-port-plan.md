@@ -88,4 +88,4 @@ Everything. Known risks for the first Mac build: Swift 6 strict-concurrency erro
 
 ## Outcome
 
-The six work packages are written and committed, but nothing has been compiled or run. The decision is recorded in `docs/adr/0007-ios-port.md`, the current state and known first-build risks in the "iOS port" section of `docs/STATUS.md`, and the build instructions in `ios/README.md`. Where this plan and the code differ (for example the developer key file is `Debug.local.xcconfig`, not `Debug.local.xcconfig`), the code and those documents win.
+The six work packages are written and committed. A CI workflow on a macOS runner (`.github/workflows/ios.yml`) then built them: after two test fixes and four compile fixes, `swift test` passes and the app builds for the simulator. It has not been run. The decision is recorded in `docs/adr/0007-ios-port.md`, the current state and known first-build risks in the "iOS port" section of `docs/STATUS.md`, and the build instructions in `ios/README.md`. Where this plan and the code differ (for example the developer key file is `Debug.local.xcconfig`, not `Debug.local.xcconfig`), the code and those documents win.

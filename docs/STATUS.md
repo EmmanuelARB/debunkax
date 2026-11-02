@@ -22,7 +22,7 @@ The first version is feature-complete and runs end to end with a real provider o
 
 ## iOS port (ADR 0007)
 
-**Nothing in `ios/` has been compiled, run or tested.** It was written on a Linux machine with no Mac, Xcode or Swift toolchain, so every line below describes code that exists, not code that works.
+**The iOS port compiles and its unit tests pass, but it has never been run.** It was written on a Linux machine with no Mac; the CI workflow `.github/workflows/ios.yml` (GitHub's `macos-26` runner, Xcode 26.6, iOS 26.5 SDK) now builds sherpa-onnx, runs `swift test` in `ios/DebunkaxKit` (139 tests, all passing) and builds the app for the simulator (Debug, unsigned). Nothing has been launched on a simulator or a device, so no audio, speech-to-text, Check or UI behaviour is verified. The CI build has no `titanet_small.onnx` (produced locally by `export_prints.py`), so it builds without the speaker model.
 
 What exists: a native Swift 6 / SwiftUI port (iOS 26 minimum, iPhone and iPad), plan in `docs/ios-port-plan.md`, build steps in `ios/README.md`.
 - `ios/DebunkaxKit` (Swift package): `DebunkaxCore` (domain, Listening Session, OpenRouter Check client, speaker matching, PKCE) and `DebunkaxData` (SQLite History, file-backed settings), with XCTest ports of the JVM unit tests.
@@ -30,12 +30,10 @@ What exists: a native Swift 6 / SwiftUI port (iOS 26 minimum, iPhone and iPad), 
 - `ios/scripts/build-sherpa.sh` and `ios/project.yml` (XcodeGen).
 - Microphone only (no app-audio source), no launch-time update check, mic sessions stop when the scene goes to the background.
 
-Known first-build risks:
-- `SpeechAnalyzer`, `SpeechTranscriber` and `AssetInventory` signatures were written from memory of the iOS 26 SDK.
-- Swift 6 strict concurrency will probably report errors.
-- The sherpa-onnx xcframework build (`build-ios.sh` of the v1.13.8 tag), the bridging header and linking (static onnxruntime, `-lc++`).
-- The vendored `SherpaOnnx.swift` is meant to compile in Swift 5 mode through a per-file flag in `project.yml`; Xcode may ignore it (fallback: Swift 5 for the whole target).
-- XcodeGen's handling of the `DebunkaxKitTests` scheme (package test targets) is unverified.
+First CI builds: the sherpa-onnx xcframework build, the bridging header, the SpeechAnalyzer/AssetInventory code and the link all went through; the fixes needed were two test bugs (virtual time in the scripted-engine test; a TF-IDF score that varied in its last bits because a Swift Dictionary's iteration order isn't fixed, now summed in index order) and four Swift 6 compile errors. Still unverified at runtime:
+- `SpeechAnalyzer` / `AssetInventory` behaviour (asset install, fr-FR availability, the fallback to sherpa-onnx).
+- A device (arm64 iOS) build and signing; only the simulator build runs in CI.
+- XcodeGen's `DebunkaxKitTests` scheme (CI uses `swift test` instead).
 - The alert sound (`AudioServicesPlaySystemSound`) may be muted by the `.record` audio session.
 - No app icon. `DEVELOPMENT_TEAM` is empty.
 - `Info.plist` does not set `UIFileSharingEnabled`, so `Documents/demo.wav` cannot be placed through Finder as shipped (see `ios/README.md`).
@@ -63,10 +61,10 @@ Next step: first build on a Mac, fix what it reports, run `swift test` in `ios/D
 | Speaker recognition | End to end on the emulator: 8 min of the LCI/Medef debate through "Démo audio réelle", offline. Claims were attributed to Le Pen, then Glucksmann, then Attal, in the same order as the PC timeline (`spikes/speakers/live.py`); a moderator's line stayed unknown. Live on the tablet against a TV (test screen): right names at 0.6–0.8 once each window is brought to a normal level. On clean clips (`spikes/speakers/open_set.py`, 5 s windows at 0.45, all 306 clips pass `check_clips.py`): enrolled leaders named right 82%, wrong 3.2%, unknown 15%; other enrolled people 75% / 3.7% / 22%; voices not enrolled get a name in 8.2% of windows (6.8% at 0.55), before the sentence-level rule. The threshold barely matters on clean clips; the 0.10 margin does most of the work. Most confusions are between similar voices (Bertrand/Cazeneuve, Glucksmann/Bardella, Faure/Lecornu, Lapix→Roux). The list is frozen at 62 for now: the user unfroze it to add the three 'Choisir 2027' primary candidates not already enrolled (Royal, Guedj, Maurel; Faure and Glucksmann were already leaders) and David Pujadas (removed from the not-enrolled eval set for it), and none of them appears in the confusion list. Gindre and Switek were dropped because no trustworthy sources for their clips were found. **Not measured:** the wrong-name rate in a real session against noted speakers. On the tablet, ML Kit now reads the app's own mic feed through a pipe instead of opening the mic itself; the pipe path was exercised by the first watched demo-audio session, a live TV session on the real mic is still untested |
 | ML Kit telemetry blocked | Verified: events deleted locally ("Unknown backend") |
 | Session audio source (ADR 0004) | Capture verified on the tablet: with the system consent, YouTube's audio was captured live through the playback-capture path (the three non-obvious platform constraints — foreground service before the token, no `setAudioSource` with a capture config, at least one matching rule — were each found by crash/failure and fixed). App-audio sessions keep running in the background (the video plays in another app); mic sessions still stop in the background. Not yet run: a full session (Claims → Checks → Alerts) from app audio; the microphone path is untouched |
-| iOS: DebunkaxKit unit tests (`swift test`) | Not compiled. Written, never run |
-| iOS: SpeechAnalyzer / AssetInventory engine, Apple speech asset download | Not compiled. API shapes from memory |
-| iOS: sherpa-onnx xcframework, fallback engine, speaker recognition | Not compiled. Build script and wrapper never run |
-| iOS: SwiftUI app, Keychain vault, OpenRouter sign-in, XcodeGen project | Not compiled. Never opened in Xcode or run on a device |
+| iOS: DebunkaxKit unit tests (`swift test`) | Verified in CI (macos-26, Xcode 26.6): 139 tests pass |
+| iOS: SpeechAnalyzer / AssetInventory engine, Apple speech asset download | Compiles (simulator build in CI). Never run |
+| iOS: sherpa-onnx xcframework, fallback engine, speaker recognition | `build-sherpa.sh` runs and the app links against it in CI. Never run |
+| iOS: SwiftUI app, Keychain vault, OpenRouter sign-in, XcodeGen project | XcodeGen project generates and the app builds for the simulator in CI. Never launched |
 
 ## Decisions already made (don't re-ask)
 

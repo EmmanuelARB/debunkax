@@ -2,7 +2,7 @@
 
 Native Swift 6 / SwiftUI port of the Android app (ADR 0007, plan in `../docs/ios-port-plan.md`). iOS 26 minimum, iPhone and iPad.
 
-> **Not yet compiled.** This code was written on a Linux machine with no Mac, Xcode or Swift toolchain. Nothing here has been built, run or tested, including the unit tests and the sherpa-onnx build script. Expect compile errors on the first build (see "Known first-build risks" in `../docs/STATUS.md`).
+> **Builds, never run.** CI (`../.github/workflows/ios.yml`, macOS runner) builds sherpa-onnx with `scripts/build-sherpa.sh`, runs `swift test` in `DebunkaxKit` (all pass) and builds the app for the simulator. Nobody has launched it on a simulator or a device yet (see the iOS section of `../docs/STATUS.md`).
 
 ## Prerequisites
 
