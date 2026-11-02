@@ -72,7 +72,7 @@ final class SherpaSpeechEngine: SpeechEngine {
     }
 
     /// Same values as the Kotlin engine: 80-dim features at 16 kHz, zipformer transducer, 2 threads, greedy search,
-    /// endpoint rules 2.4 s / 1.2 s / 20 s (sherpa-onnx's Kotlin defaults; the Swift wrapper's rule 3 default is 30).
+    /// endpoint rules 2.4 s / 1.4 s / 20 s (sherpa-onnx's Kotlin defaults; the Swift wrapper's rule 3 default is 30).
     private func newRecognizer(_ paths: SherpaModelPaths) -> SherpaOnnxRecognizer {
         // The wrapper hands C pointers into autoreleased NSStrings; the pool outlives the (copying) C constructor call.
         autoreleasepool {
@@ -85,7 +85,7 @@ final class SherpaSpeechEngine: SpeechEngine {
                 modelConfig: modelConfig,
                 enableEndpoint: true,
                 rule1MinTrailingSilence: 2.4,
-                rule2MinTrailingSilence: 1.2,
+                rule2MinTrailingSilence: 1.4,
                 rule3MinUtteranceLength: 20,
                 decodingMethod: "greedy_search")
             return SherpaOnnxRecognizer(config: &config)
