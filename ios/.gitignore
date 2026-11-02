@@ -1,0 +1,5 @@
+Vendor/
+*.xcodeproj
+DerivedData/
+.build/
+*.xcconfig.local

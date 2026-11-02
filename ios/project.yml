@@ -1,0 +1,28 @@
+# Skeleton: completed by the SwiftUI app work package (Info.plist, entitlements, test target, build settings).
+name: Debunkax
+options:
+  bundleIdPrefix: app.debunkax
+  deploymentTarget:
+    iOS: "26.0"
+packages:
+  DebunkaxKit:
+    path: DebunkaxKit
+targets:
+  Debunkax:
+    type: application
+    platform: iOS
+    sources:
+      - Debunkax
+    dependencies:
+      - package: DebunkaxKit
+        product: DebunkaxCore
+      - package: DebunkaxKit
+        product: DebunkaxData
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.debunkax
+        SWIFT_VERSION: "6.0"
+    resources:
+      - path: ../app/src/main/assets/claim_model.json
+      - path: ../app/src/main/assets/speakers
+        optional: true
