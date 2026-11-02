@@ -180,7 +180,7 @@ final class SherpaModelManager: Sendable {
             // Some tars prefix entries with "./".
             let key = entry.hasPrefix("./") ? String(entry.dropFirst(2)) : entry
             guard let file = wanted[key] else { return nil }
-            return modelDir.appendingPathComponent(file.name + ".part")
+            return self.modelDir.appendingPathComponent(file.name + ".part")
         }
         for file in SherpaModelFiles.all {
             let partial = modelDir.appendingPathComponent(file.name + ".part")

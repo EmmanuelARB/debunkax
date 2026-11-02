@@ -26,7 +26,7 @@ final class ClaimDetailViewModel {
 
     func startObserving() {
         guard observation == nil else { return }
-        let stream = container.history.claim(claimId)
+        let stream = container.history.claim(id: claimId)
         observation = Task { [weak self] in
             for await value in stream {
                 if Task.isCancelled { return }
